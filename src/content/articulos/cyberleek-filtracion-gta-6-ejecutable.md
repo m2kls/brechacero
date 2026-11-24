@@ -5,7 +5,7 @@ date: 2026-11-24T13:20:00+01:00
 category: noticias
 tags: [GTA 6, CyberLeek, filtraciones, malware, Rockstar, Take-Two, videojuegos]
 author: Redacción
-featured: true
+featured: false
 photo: "File:Xbox_Series_X_and_S_with_controllers.jpg"
 imageAlt: "Consolas Xbox Series X y Series S con sus mandos"
 ---
