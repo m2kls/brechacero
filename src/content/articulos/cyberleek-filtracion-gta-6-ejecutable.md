@@ -6,8 +6,8 @@ category: noticias
 tags: [GTA 6, CyberLeek, filtraciones, malware, Rockstar, Take-Two, videojuegos]
 author: Redacción
 featured: true
-photo: "File:Xbox_Series_X_2.jpg"
-imageAlt: "Consola Xbox Series X"
+photo: "File:Xbox_Series_X_and_S_with_controllers.jpg"
+imageAlt: "Consolas Xbox Series X y Series S con sus mandos"
 ---
 
 El nombre de CyberLeek lleva tres meses persiguiendo a Rockstar Games. Lo que empezó en agosto con vídeos y recursos del mapa de *Grand Theft Auto VI* ha terminado esta semana con algo mucho más serio: el supuesto ejecutable de la versión de Xbox Series del juego, publicado el lunes 23 de noviembre en webs de piratería y foros. Es la pieza que faltaba en una compilación de unos 209 GB que el mismo filtrador había difundido días antes.
