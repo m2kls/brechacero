@@ -6,6 +6,8 @@ category: noticias
 tags: [resumen semanal, Comisión Europea, IA, filtraciones, La Poste]
 author: Redacción
 imageCredit: "Ilustración: Brecha Cero"
+photo: "File:Datacenter.jpg"
+imageAlt: "Centro de datos"
 ---
 
 Repasamos lo que pasó la semana pasada. Estas son las noticias que más pueden afectarte o que más dicen sobre hacia dónde va la ciberseguridad.

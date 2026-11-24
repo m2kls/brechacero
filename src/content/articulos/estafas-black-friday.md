@@ -6,6 +6,8 @@ category: noticias
 tags: [Black Friday, compras online, phishing, fraude]
 author: Redacción
 imageCredit: "Ilustración: Brecha Cero"
+photo: "File:Black_Friday_at_the_Apple_Store_on_Fifth_Avenue,_New_York_City,_2011.jpg"
+imageAlt: "Compradores durante el Black Friday"
 ---
 
 El Black Friday (este año, el 27 de noviembre) y el Cyber Monday son las fechas favoritas de los estafadores. Hay prisa, hay descuentos enormes y hay millones de paquetes en camino: el escenario perfecto para colarte una oferta falsa o un aviso de entrega inventado.

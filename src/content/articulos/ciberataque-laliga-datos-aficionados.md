@@ -7,6 +7,8 @@ tags: [LaLiga, filtración de datos, fútbol, phishing, España]
 author: Redacción
 featured: true
 imageCredit: "Ilustración: Brecha Cero"
+photo: "File:Madrid_-_Estadio_Wanda_Metropolitano_07.jpg"
+imageAlt: "Estadio de fútbol en Madrid"
 ---
 
 LaLiga ha confirmado que un ciberdelincuente accedió a una de sus plataformas tecnológicas de servicios a aficionados y extrajo datos personales de usuarios registrados. La competición lo comunicó el lunes 23 de noviembre en una nota de prensa, una semana después de haber cortado el acceso.

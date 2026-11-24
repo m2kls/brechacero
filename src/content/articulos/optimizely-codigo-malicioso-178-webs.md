@@ -6,6 +6,8 @@ category: noticias
 tags: [cadena de suministro, Optimizely, JavaScript, skimming, robo de tarjetas]
 author: Redacción
 imageCredit: "Ilustración: Brecha Cero"
+photo: "File:Code_on_computer_monitor_(Unsplash).jpg"
+imageAlt: "Código fuente en un monitor"
 ---
 
 Muchas webs grandes cargan scripts de terceros para hacer pruebas A/B, medir audiencias o personalizar contenido. Si alguien compromete a uno de esos proveedores, su código acaba ejecutándose en el navegador de los visitantes de todas las webs que lo usan. Eso es lo que ocurrió el 16 de noviembre con Optimizely Web Experimentation.

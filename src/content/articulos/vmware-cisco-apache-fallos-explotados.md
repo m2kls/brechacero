@@ -6,6 +6,8 @@ category: vulnerabilidades
 tags: [VMware, vCenter, Cisco, Apache, zero-day, CISA KEV, parches]
 author: Redacción
 imageCredit: "Ilustración: Brecha Cero"
+photo: "File:Front_of_server_racks_at_NERSC.jpg"
+imageAlt: "Armarios de servidores en un centro de datos"
 ---
 
 La agencia de ciberseguridad de Estados Unidos (CISA) añadió el 20 de noviembre tres vulnerabilidades críticas a su catálogo de fallos explotados activamente (KEV). Las tres tienen una puntuación CVSS de 9,8 y se pueden aprovechar sin credenciales. Si administras alguno de estos productos, esto va antes que cualquier otra tarea de la semana.

@@ -14,7 +14,9 @@ const articulos = defineCollection({
     author: z.string().default('Redacción'),
     image: z.string().optional(),       // ruta en /public, p.ej. /img/mi-foto.webp
     imageAlt: z.string().optional(),
-    imageCredit: z.string().optional(),   // p.ej. 'Foto: Ana López / Unsplash'
+    imageCredit: z.string().optional(),   // p.ej. 'Foto: Ana López / Wikimedia Commons (CC BY-SA 4.0)'
+    imageCreditUrl: z.string().url().optional(), // página de la foto con su licencia
+    photo: z.string().optional(),         // archivo de Wikimedia Commons, p.ej. 'File:Nombre.jpg' (lo descarga GitHub Actions)
     video: z.string().optional(),         // ID de YouTube, p.ej. 'uhzV5-iFb5E'
     videoTitle: z.string().optional(),
     videoSource: z.string().optional(),   // canal, p.ej. 'INCIBE'

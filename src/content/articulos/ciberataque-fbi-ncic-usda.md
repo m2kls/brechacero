@@ -6,6 +6,8 @@ category: noticias
 tags: [FBI, Estados Unidos, ciberataque, administración pública, integridad de datos]
 author: Redacción
 imageCredit: "Ilustración: Brecha Cero"
+photo: "File:FBI_Headquarters_-_J._Edgar_Hoover_Building_(53840035941).jpg"
+imageAlt: "Sede del FBI en Washington, el edificio J. Edgar Hoover"
 ---
 
 La semana del 16 al 20 de noviembre de 2026 terminó con dos incidentes de ciberseguridad en organismos federales de Estados Unidos. Uno de ellos está confirmado oficialmente; el otro, por ahora, solo se conoce por fuentes anónimas. Como suele pasar en las primeras horas de un incidente, la información es parcial, así que vamos a separar con cuidado lo que se sabe de lo que no.

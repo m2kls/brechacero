@@ -23,6 +23,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - uses: actions/cache@v4
+        with:
+          path: public/img/fotos
+          key: fotos-${{ hashFiles('src/content/articulos/*.md') }}
+          restore-keys: fotos-
+      - name: Descargar fotos reales (Wikimedia Commons)
+        run: pip install --quiet pillow && python3 tools/foto.py ci
       - run: npm run build
       - name: Subir a Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

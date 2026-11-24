@@ -6,6 +6,8 @@ category: vulnerabilidades
 tags: [Microsoft, Outlook, zero-day, parches, Patch Tuesday]
 author: Redacción
 imageCredit: "Ilustración: Brecha Cero"
+photo: "File:Microsoft_sign_closeup.jpg"
+imageAlt: "Cartel de Microsoft en su sede de Redmond"
 ---
 
 Microsoft publicó el pasado 10 de noviembre de 2026 su actualización mensual de seguridad, el conocido *Patch Tuesday*. Es una de las más grandes que se recuerdan: según CSO Online, corrige 1.094 vulnerabilidades, de las que 63 están calificadas como críticas. Pero la que más preocupa no es la que tiene la nota más alta, sino una de gravedad media que ya se está aprovechando en ataques reales.

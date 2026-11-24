@@ -6,6 +6,8 @@ category: noticias
 tags: [elecciones, desinformación, CCN-CERT, INCIBE, Rusia, amenazas híbridas]
 author: Redacción
 imageCredit: "Ilustración: Brecha Cero"
+photo: "File:Urna_electoral_y_caja_de_sellos.JPG"
+imageAlt: "Urna electoral"
 ---
 
 A cinco días de las elecciones del 29 de noviembre, el dispositivo de protección ya está en marcha. No se trata solo de evitar que alguien tumbe una web: el objetivo principal es que nadie consiga sembrar dudas sobre el voto por correo o el recuento.
