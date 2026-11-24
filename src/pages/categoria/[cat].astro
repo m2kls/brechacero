@@ -15,7 +15,7 @@ const others = all.filter((p) => p.data.category !== cat.slug).slice(0, 6);
 ---
 <Base title={cat.name} description={cat.description}>
   <div class="wrap">
-    <header class="section-hero">
+    <header class="section-hero" data-cat={cat.slug}>
       <h1 class="h">{cat.name}</h1>
       <p>{cat.description}</p>
     </header>

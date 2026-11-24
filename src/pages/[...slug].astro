@@ -44,8 +44,8 @@ const jsonLd = {
 <Base title={d.title} description={d.description} image={img} type="article" jsonLd={jsonLd} article={{ published: d.date, modified: d.updated ?? d.date, section: categoryName(d.category), tags: d.tags }}>
   <div class="wrap">
     <header class="article-head">
-      <a class="kicker" href={`/categoria/${d.category}/`}>{categoryName(d.category)}</a>
-      <h1 class="h">{d.title}</h1>
+      <a class="kicker" data-cat={d.category} href={`/categoria/${d.category}/`}>{categoryName(d.category)}</a>
+      <h1 class="h" data-pagefind-meta="title">{d.title}</h1>
       <p class="standfirst">{d.description}</p>
       <div class="meta-bar">
         <div class="author">
@@ -60,18 +60,26 @@ const jsonLd = {
       </div>
     </header>
     <figure class="hero-figure">
-      <img src={img} alt={d.imageAlt ?? ''} width="1600" height="900" fetchpriority="high" />
+      <img src={img} alt={d.imageAlt ?? ''} data-pagefind-meta="image[src]" width="1600" height="900" fetchpriority="high" />
       {d.imageCredit && <figcaption>{d.imageCreditUrl ? <a href={d.imageCreditUrl} rel="nofollow noopener" target="_blank">{d.imageCredit}</a> : d.imageCredit}</figcaption>}
     </figure>
 
     <div class="article-body">
       <div>
-        <div class="prose">
+        <div class="prose" data-pagefind-body>
           <Content />
           {d.video && <Video id={d.video} title={d.videoTitle} source={d.videoSource} />}
         </div>
         <AdSlot position="inArticle" />
-        {d.tags.length > 0 && <div class="tags">{d.tags.map((t) => <span>{t}</span>)}</div>}
+        {d.tags.length > 0 && <div class="tags"><span class="tags-label">Temas</span>{d.tags.map((t) => <a href={`/buscar/?q=${encodeURIComponent(t)}`} rel="nofollow">{t}</a>)}</div>}
+        <div class="author-box">
+          <span class="avatar" aria-hidden="true">{initials(d.author)}</span>
+          <div>
+            <strong>{d.author === 'Redacción' ? `Redacción de ${SITE.name}` : d.author}</strong>
+            <p>Seguimos la actualidad de la ciberseguridad en España y el mundo con un enfoque práctico: qué ha pasado, a quién afecta y cómo protegerte. Contrastamos cada noticia con fuentes oficiales.</p>
+            <a href="/sobre-nosotros/">Cómo trabajamos →</a>
+          </div>
+        </div>
         <p class="disclaimer"><strong>Nota.</strong> Contamos cómo funcionan las amenazas para que puedas reconocerlas y protegerte. Prueba estas técnicas solo en equipos tuyos o con permiso por escrito: entrar en sistemas ajenos es delito.</p>
       </div>
       <aside class="rail">

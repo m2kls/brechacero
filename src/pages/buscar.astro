@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Buscar" description="Busca en todas las noticias, guías y análisis de Brecha Cero." noindex>
+  <div class="wrap">
+    <header class="section-hero">
+      <h1 class="h">Buscar</h1>
+      <p>Encuentra noticias, guías y análisis por empresa, producto, CVE o tema.</p>
+    </header>
+    <div id="search" class="search-box"></div>
+    <noscript><p>La búsqueda necesita JavaScript. También puedes navegar por las secciones del menú.</p></noscript>
+  </div>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', function () {
+      var ui = new PagefindUI({ element: '#search', showSubResults: false, showImages: true, resetStyles: false, autofocus: true,
+        translations: { placeholder: 'Busca: phishing, Outlook, CVE-2026…', zero_results: 'Sin resultados para [SEARCH_TERM]', many_results: '[COUNT] resultados para [SEARCH_TERM]', one_result: '1 resultado para [SEARCH_TERM]', load_more: 'Cargar más resultados', clear_search: 'Borrar' } });
+      var q = new URLSearchParams(location.search).get('q');
+      if (q) ui.triggerSearch(q);
+    });
+  </script>
+</Base>

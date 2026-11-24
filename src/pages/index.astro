@@ -41,7 +41,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [
   {bandItems.length > 0 && (
     <section class="band">
       <div class="wrap">
-        <div class="section-head"><h2>Guías prácticas</h2><a class="more" href="/categoria/guias/">Todas las guías →</a></div>
+        <div class="section-head" data-cat="guias"><h2>Guías prácticas</h2><a class="more" href="/categoria/guias/">Todas las guías →</a></div>
         <div class="grid-3">{bandItems.map((p) => <Story post={p} />)}</div>
       </div>
     </section>
@@ -50,7 +50,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [
   <div class="wrap">
     {sections.map(({ c, items }) => (
       <section class="section">
-        <div class="section-head"><h2>{c.name}</h2><a class="more" href={`/categoria/${c.slug}/`}>Ver todo →</a></div>
+        <div class="section-head" data-cat={c.slug}><h2>{c.name}</h2><a class="more" href={`/categoria/${c.slug}/`}>Ver todo →</a></div>
         <div class="grid-4">{items.map((p) => <Story post={p} size="sm" />)}</div>
       </section>
     ))}
