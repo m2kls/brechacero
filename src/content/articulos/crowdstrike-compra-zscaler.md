@@ -5,8 +5,8 @@ date: 2026-11-24T17:00:00+01:00
 category: noticias
 tags: [CrowdStrike, Zscaler, adquisición, Zero Trust, empresas de ciberseguridad]
 author: Redacción
-photo: "File:Crowdstrike--01 (38826886275).jpg"
-imageAlt: "CrowdStrike, la empresa de ciberseguridad que compra Zscaler"
+photo: "File:150 Mathilda Place.jpg"
+imageAlt: "Oficinas de CrowdStrike en Sunnyvale, California, la empresa que compra Zscaler"
 ---
 
 CrowdStrike compra Zscaler. Las dos compañías anunciaron el 23 de noviembre de 2026 un acuerdo definitivo por el que CrowdStrike, conocida por su antivirus para empresas Falcon, adquirirá Zscaler, uno de los grandes proveedores de seguridad de red en la nube. La operación valora Zscaler en unos 43.900 millones de dólares y se pagará íntegramente en acciones. Es, con diferencia, la mayor compra de la historia del sector de la ciberseguridad.
