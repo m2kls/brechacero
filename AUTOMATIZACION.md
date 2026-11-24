@@ -80,6 +80,11 @@ imageCreditUrl: "https://commons.wikimedia.org/wiki/File:..."
 ---
 ```
 
+**Fecha (`date`)**: pon la hora real a la que haces el commit, en hora de Madrid (`TZ=Europe/Madrid date +%Y-%m-%dT%H:%M:00%:z`),
+**nunca una hora posterior**. La web oculta los artículos con fecha futura hasta el siguiente build, así que una noticia
+con fecha adelantada no aparecería. Si publicas varias a la vez, puedes separarlas un minuto hacia atrás, nunca hacia delante.
+Antes del push comprueba que ningún `date:` de hoy es posterior a la hora actual.
+
 `featured: true` solo para la noticia más importante del día (y quítalo de la anterior).
 
 ## 4. Foto real con licencia
