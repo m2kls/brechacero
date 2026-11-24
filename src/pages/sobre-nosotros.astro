@@ -3,7 +3,6 @@ import Page from '../layouts/Page.astro';
 import { SITE } from '../config';
 ---
 <Page title="Sobre nosotros" description={`Quiénes somos y qué hacemos en ${SITE.name}.`}>
-  <!-- PERSONALIZA ESTE TEXTO: Google valora que se vea quién está detrás de la web -->
   <p><strong>{SITE.name}</strong> es un medio digital independiente dedicado a la ciberseguridad, el hacking ético, Linux y la privacidad, escrito en español y pensado tanto para curiosos como para profesionales.</p>
   <h2>Qué publicamos</h2>
   <ul>
@@ -14,7 +13,17 @@ import { SITE } from '../config';
   </ul>
   <h2>Nuestra línea editorial</h2>
   <p>Hacemos divulgación con enfoque defensivo. Explicamos cómo funcionan las amenazas para que puedas entenderlas y protegerte, nunca para dañar a terceros. No publicamos herramientas maliciosas, credenciales filtradas ni instrucciones para atacar sistemas sin autorización.</p>
-  <h2>Quién escribe</h2>
-  <p>[Escribe aquí unas líneas sobre ti: tu experiencia, qué estudias o a qué te dedicas, por qué creaste la web. Añade enlaces a tus redes si quieres.]</p>
-  <p>¿Quieres proponernos un tema o corregir un error? <a href="/contacto/">Escríbenos</a>.</p>
+  <h2>Cómo trabajamos</h2>
+  <ul>
+    <li><strong>Fuentes primero.</strong> Cada noticia se contrasta con al menos dos fuentes y, siempre que existe, con la oficial: INCIBE, CCN-CERT, AEPD, CISA, los avisos del fabricante afectado o la propia empresa. Las enlazamos al final de cada artículo.</li>
+    <li><strong>Lo confirmado y lo que no.</strong> Si un dato no está verificado (una cifra de afectados, la autoría de un ataque), lo decimos claramente.</li>
+    <li><strong>Siempre con consejos.</strong> Toda noticia termina explicando a quién afecta y qué puedes hacer para protegerte.</li>
+    <li><strong>Herramientas.</strong> Usamos automatización e inteligencia artificial para vigilar fuentes a todas horas y preparar los textos, con reglas editoriales estrictas: redacción original, fuentes enlazadas y nada de contenido ofensivo.</li>
+    <li><strong>Imágenes con licencia.</strong> Las fotos proceden de Wikimedia Commons con licencias que permiten su uso y llevan su crédito; los gráficos son de elaboración propia.</li>
+  </ul>
+  <h2>Correcciones</h2>
+  <p>Si encuentras un error, escríbenos desde la página de <a href="/contacto/">contacto</a>. Corregimos los fallos en cuanto los comprobamos e indicamos la fecha de actualización en el artículo.</p>
+  <h2>Independencia y publicidad</h2>
+  <p>{SITE.name} es un proyecto independiente que se financia con publicidad. Los anunciantes no influyen en lo que publicamos y nunca publicamos contenido patrocinado sin indicarlo.</p>
+  <p>¿Quieres proponernos un tema? <a href="/contacto/">Escríbenos</a>.</p>
 </Page>

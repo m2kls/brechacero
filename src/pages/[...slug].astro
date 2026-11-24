@@ -6,6 +6,7 @@ import Story from '../components/Story.astro';
 import Video from '../components/Video.astro';
 import { SITE, categoryName } from '../config';
 import { webpSrcset } from '../lib/img';
+const hora = (f: Date) => (f.getUTCHours() === 0 && f.getUTCMinutes() === 0) ? '' : ', ' + f.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
 import { getPosts, cover, longDate, readingTime, initials } from '../lib/posts';
 
 export async function getStaticPaths() {
@@ -51,7 +52,7 @@ const jsonLd = {
       <div class="meta-bar">
         <div class="author">
           <span class="avatar" aria-hidden="true">{initials(d.author)}</span>
-          <span><strong>{d.author}</strong><small><time datetime={d.date.toISOString()}>{longDate(d.date)}</time> · {readingTime(post)} min de lectura</small></span>
+          <span><strong>{d.author}</strong><small><time datetime={d.date.toISOString()}>{longDate(d.date)}{hora(d.date)}</time>{d.updated && <> · Actualizado <time datetime={d.updated.toISOString()}>{longDate(d.updated)}{hora(d.updated)}</time></>} · {readingTime(post)} min de lectura</small></span>
         </div>
         <div class="share" aria-label="Compartir">
           <a href={`https://x.com/intent/post?url=${enc(url)}&text=${enc(d.title)}`} rel="noopener" aria-label="Compartir en X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4l-7.4 8.5L23 22h-6.8l-5.3-7-6.1 7H1.4l7.9-9L1 2h7l4.8 6.4L18.2 2Zm-1.2 18h1.9L7.1 4H5.1L17 20Z"/></svg></a>
