@@ -1,7 +1,7 @@
 ---
 title: "CrowdStrike compra Zscaler por 43.900 millones: la mayor operación de la ciberseguridad"
 description: "CrowdStrike comprará Zscaler en una operación de 43.900 millones de dólares en acciones. Qué significa para sus clientes y para el mercado de la ciberseguridad."
-date: 2026-11-24T17:10:00+01:00
+date: 2026-11-24T17:00:00+01:00
 category: noticias
 tags: [CrowdStrike, Zscaler, adquisición, Zero Trust, empresas de ciberseguridad]
 author: Redacción

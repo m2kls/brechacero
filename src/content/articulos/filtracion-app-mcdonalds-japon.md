@@ -1,7 +1,7 @@
 ---
 title: "Filtración en la app de McDonald's Japón: expuestos historiales de compra y ubicación"
 description: "McDonald's Japón confirma un acceso no autorizado a la base de datos de su app oficial con compras, IP y ubicación de clientes. Qué datos se han visto afectados."
-date: 2026-11-24T17:30:00+01:00
+date: 2026-11-24T16:55:00+01:00
 category: privacidad
 tags: [McDonald's, Japón, filtración de datos, apps móviles, privacidad, ubicación]
 author: Redacción

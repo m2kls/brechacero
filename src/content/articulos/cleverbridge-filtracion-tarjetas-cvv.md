@@ -1,7 +1,7 @@
 ---
 title: "Filtración en Cleverbridge: roban números de tarjeta y CVV de clientes"
 description: "Cleverbridge, la pasarela de pago de muchas tiendas de software, confirma el robo de números de tarjeta con su CVV. Quién está afectado y qué hacer ya."
-date: 2026-11-24T17:20:00+01:00
+date: 2026-11-24T17:05:00+01:00
 category: noticias
 tags: [Cleverbridge, filtración de datos, tarjetas de crédito, CVV, fraude, pagos online]
 author: Redacción
