@@ -2,7 +2,7 @@
 <p id="s">Preparando vídeo…</p>
 <script>
 (async()=>{const s=document.getElementById('s');
-try{const r=await fetch('reel-01-cyberleek.mp4');const buf=await r.arrayBuffer();
+try{const r=await fetch('https://raw.githubusercontent.com/m2kls/brechacero/claude/project-thread-9q9ohg/social/reel-01-cyberleek.mp4');const buf=await r.arrayBuffer();
 s.textContent='Descargado '+buf.byteLength+' bytes';
 if(!window.opener){s.textContent+=' · sin opener';return;}
 window.opener.postMessage({bcreel:buf},'https://www.instagram.com');
