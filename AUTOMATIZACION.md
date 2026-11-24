@@ -7,17 +7,22 @@ Cualquier persona que edite la web también puede usarlas como guía de estilo.
 
 1. Mira qué se ha publicado ya: `ls src/content/articulos/` y los títulos de los últimos 3 días
    (`grep -h '^title:' src/content/articulos/*.md`). No repitas temas ya cubiertos.
-2. Busca noticias de ciberseguridad de las **últimas 6 horas**, en este orden de prioridad:
-   - España: INCIBE, CCN-CERT, AEPD, Policía Nacional / Guardia Civil, grandes empresas o administraciones españolas afectadas.
-   - Mundo: CISA (catálogo KEV), avisos de Microsoft, Google, Apple, Cisco, Fortinet, etc.; grandes filtraciones; operaciones policiales contra ciberdelincuencia.
-   - Fuentes de referencia: BleepingComputer, The Record, SecurityWeek, The Hacker News, Krebs on Security, Una al Día (Hispasec), medios españoles generalistas.
-3. Publica **solo** si la noticia cumple al menos una de estas condiciones:
-   - afecta a muchos usuarios en España o en el mundo,
-   - es un fallo que se está explotando y hay que actualizar,
-   - es una filtración o ataque a una organización conocida,
-   - es una estafa activa que conviene avisar.
-4. Máximo **2 artículos por ejecución** y **8 al día**. Si no hay nada que cumpla, **no publiques nada**:
-   publicar relleno perjudica en Google y en AdSense.
+2. Busca noticias e historias de las **últimas 12 horas** sobre cualquier tema de la web:
+   ciberseguridad, vulnerabilidades y parches, filtraciones y ataques, estafas, privacidad y protección de datos,
+   hacking ético, CTF y formación, Linux y software libre (seguridad), seguridad e IA, nuevas herramientas,
+   informes y estudios, regulación y operaciones policiales. Fuentes, por orden:
+   - España: INCIBE, CCN-CERT, AEPD, Policía Nacional / Guardia Civil, empresas o administraciones españolas.
+   - Mundo: CISA (catálogo KEV), avisos de Microsoft, Google, Apple, Cisco, Fortinet, etc.; Europol.
+   - Medios: BleepingComputer, The Record, SecurityWeek, The Hacker News, Krebs on Security, Una al Día (Hispasec), medios españoles.
+3. Ordena lo encontrado por importancia y publica **primero lo más importante**:
+   - **Prioridad alta**: afecta a muchos usuarios en España o en el mundo, fallo explotado que hay que parchear,
+     filtración o ataque a una organización conocida, estafa activa.
+   - **Prioridad media**: parches importantes, nuevos informes o estudios relevantes, operaciones policiales,
+     novedades de privacidad o regulación, herramientas o técnicas defensivas nuevas, noticias de la industria.
+   - **Interesante**: historias curiosas o didácticas del sector que encajen con la web (formación, CTF, Linux, IA y seguridad).
+4. Publica **varias noticias por ejecución** (lo normal, 2–5; hasta 6 si hay mucha actualidad). No hay límite diario.
+   Cada artículo debe tener información nueva y real, fuentes y valor para el lector: si una franja solo tiene temas flojos o
+   repetidos, publica menos o ninguno. Nunca dos artículos casi iguales ni "relleno": eso sí perjudica en Google y en AdSense.
 
 ## 2. Línea editorial (obligatoria)
 
@@ -65,7 +70,7 @@ y avisa a Bing (IndexNow) en cada publicación; no hace falta tocar nada de eso.
 title: "Titular informativo de menos de 110 caracteres"
 description: "Resumen de menos de 170 caracteres con el dato clave y por qué importa."
 date: 2026-11-24T13:00:00+01:00   # hora real de publicación, zona Europe/Madrid
-category: noticias                # o vulnerabilidades / privacidad
+category: noticias                # o vulnerabilidades / privacidad / linux / ctf-formacion / guias
 tags: [Etiqueta, Otra]
 author: Redacción
 image: "/img/fotos/<slug>.jpg"
