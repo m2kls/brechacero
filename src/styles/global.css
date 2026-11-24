@@ -316,3 +316,4 @@ figcaption { font-size: .8rem; color: var(--muted); margin-top: 8px; }
   .navbar .nav-search { display: none; }
   .navbar .wrap { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); padding-right: 40px; }
 }
+.media picture, .hero-figure picture { display: contents; }

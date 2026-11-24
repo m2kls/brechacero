@@ -1,15 +1,19 @@
 ---
 import { categoryName } from '../config';
 import { cover, shortDate, type Post } from '../lib/posts';
+import { webpSrcset } from '../lib/img';
 interface Props { post: Post; size?: 'xl' | 'md' | 'sm' | 'list'; dek?: boolean; level?: 2 | 3; eager?: boolean }
 const { post, size = 'md', dek = size !== 'sm', level = 3, eager = false } = Astro.props;
 const d = post.data;
 const href = `/${post.id}/`;
 const H = level === 2 ? 'h2' : 'h3';
+const src = cover(post);
+const srcset = webpSrcset(src);
+const sizes = size === 'xl' ? '(max-width: 700px) 100vw, 640px' : size === 'list' ? '(max-width: 760px) 100vw, 300px' : '(max-width: 560px) 100vw, (max-width: 1000px) 50vw, 340px';
 ---
 <article class={`story story-${size}`} data-cat={d.category}>
   <a href={href} class="media" tabindex="-1" aria-hidden="true">
-    <img src={cover(post)} alt="" width="1200" height="800" loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : 'auto'} />
+    <picture>{srcset && <source type="image/webp" srcset={srcset} sizes={sizes} />}<img src={src} alt="" width="1200" height="800" loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : 'auto'} /></picture>
     {d.video && <span class="play">Vídeo</span>}
   </a>
   <div class="text" style={size === 'list' ? '' : 'display:contents'}>

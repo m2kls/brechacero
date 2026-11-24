@@ -5,6 +5,7 @@ import AdSlot from '../components/AdSlot.astro';
 import Story from '../components/Story.astro';
 import Video from '../components/Video.astro';
 import { SITE, categoryName } from '../config';
+import { webpSrcset } from '../lib/img';
 import { getPosts, cover, longDate, readingTime, initials } from '../lib/posts';
 
 export async function getStaticPaths() {
@@ -60,7 +61,7 @@ const jsonLd = {
       </div>
     </header>
     <figure class="hero-figure">
-      <img src={img} alt={d.imageAlt ?? ''} data-pagefind-meta="image[src]" width="1600" height="900" fetchpriority="high" />
+      <picture>{webpSrcset(img) && <source type="image/webp" srcset={webpSrcset(img)} sizes="(max-width: 1240px) 100vw, 1200px" />}<img src={img} alt={d.imageAlt ?? ''} data-pagefind-meta="image[src]" width="1600" height="900" fetchpriority="high" /></picture>
       {d.imageCredit && <figcaption>{d.imageCreditUrl ? <a href={d.imageCreditUrl} rel="nofollow noopener" target="_blank">{d.imageCredit}</a> : d.imageCredit}</figcaption>}
     </figure>
 

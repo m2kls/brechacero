@@ -9,6 +9,7 @@ import '@fontsource/ibm-plex-mono/600.css';
 import '../styles/global.css';
 import { SITE, CATEGORIES, ADSENSE, ANALYTICS_ID } from '../config';
 import Logo from '../components/Logo.astro';
+import archivoUrl from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
 import { getPosts } from '../lib/posts';
 interface Props { article?: { published: Date; modified: Date; section: string; tags: string[] }; title?: string; description?: string; image?: string; type?: 'website' | 'article'; noindex?: boolean; jsonLd?: object; ticker?: boolean }
 const { article, title, description = SITE.description, image = '/og-default.png', type = 'website', noindex = false, jsonLd, ticker = false } = Astro.props;
@@ -31,6 +32,7 @@ const latest = ticker ? (await getPosts()).slice(0, 4) : [];
   {ADSENSE.client && <meta name="google-adsense-account" content={ADSENSE.client} />}
   <meta name="google-site-verification" content="CTejbnTVcD3UZk9E9FDGBygQtbq2Wkxs-5cK-fT2EMk" />
   <meta name="theme-color" content="#0f1115" />
+  <link rel="preload" href={archivoUrl} as="font" type="font/woff2" crossorigin />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
