@@ -4,6 +4,9 @@ import Story from '../components/Story.astro';
 import AdSlot from '../components/AdSlot.astro';
 import { SITE, CATEGORIES } from '../config';
 import { getPosts, shortDate } from '../lib/posts';
+const madrid = (f: Date) => f.toLocaleDateString('es-ES', { timeZone: 'Europe/Madrid' });
+const hoy = madrid(new Date());
+const cuando = (f: Date) => madrid(f) === hoy && (f.getUTCHours() || f.getUTCMinutes()) ? f.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' }) : shortDate(f);
 
 const posts = await getPosts();
 const used = new Set<string>();
@@ -14,7 +17,7 @@ const second = take(posts, 2);
 const latestList = posts.slice(0, 7);
 const guides = posts.filter((p) => ['guias', 'linux'].includes(p.data.category));
 const bandItems = take(guides, 3);
-const sections = CATEGORIES.filter((c) => !['guias', 'linux'].includes(c.slug)).filter((c) => posts.filter((p) => p.data.category === c.slug && !used.has(p.id)).length >= 3).map((c) => ({ c, items: take(posts.filter((p) => p.data.category === c.slug), 4) }));
+const sections = CATEGORIES.filter((c) => !['guias', 'linux'].includes(c.slug)).filter((c) => posts.filter((p) => p.data.category === c.slug && !used.has(p.id)).length >= 3).map((c) => ({ c, items: take(posts.filter((p) => p.data.category === c.slug), 3) }));
 const more = take(posts, 12);
 const jsonLd = { '@context': 'https://schema.org', '@graph': [
   { '@type': 'WebSite', '@id': `${SITE.url}/#website`, name: SITE.name, url: SITE.url, inLanguage: 'es-ES', description: SITE.description,
@@ -33,7 +36,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [
       <div class="lead-col">{second.map((p) => <Story post={p} size="md" dek={false} eager />)}</div>
       <aside class="latest">
         <h2>Últimas publicaciones</h2>
-        <ol>{latestList.map((p) => <li><time datetime={p.data.date.toISOString()}>{shortDate(p.data.date)}</time><a href={`/${p.id}/`}>{p.data.title}</a></li>)}</ol>
+        <ol>{latestList.map((p) => <li><time datetime={p.data.date.toISOString()}>{cuando(p.data.date)}</time><a href={`/${p.id}/`}>{p.data.title}</a></li>)}</ol>
       </aside>
     </section>
   </div>
@@ -51,7 +54,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [
     {sections.map(({ c, items }) => (
       <section class="section">
         <div class="section-head" data-cat={c.slug}><h2>{c.name}</h2><a class="more" href={`/categoria/${c.slug}/`}>Ver todo →</a></div>
-        <div class="grid-4">{items.map((p) => <Story post={p} size="sm" />)}</div>
+        <div class="grid-3">{items.map((p) => <Story post={p} size="md" dek={false} />)}</div>
       </section>
     ))}
     {more.length > 0 && (
