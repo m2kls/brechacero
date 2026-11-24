@@ -5,7 +5,7 @@ date: 2026-11-24
 category: noticias
 tags: [LaLiga, filtración de datos, fútbol, phishing, España]
 author: Redacción
-featured: true
+featured: false
 imageCredit: "Ilustración: Brecha Cero"
 photo: "File:Madrid_-_Estadio_Wanda_Metropolitano_07.jpg"
 imageAlt: "Estadio de fútbol en Madrid"
