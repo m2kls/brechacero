@@ -1,0 +1,119 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/400-italic.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-sans/700.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/ibm-plex-mono/600.css';
+import '../styles/global.css';
+import { SITE, CATEGORIES, ADSENSE, ANALYTICS_ID } from '../config';
+import Logo from '../components/Logo.astro';
+import { getPosts } from '../lib/posts';
+interface Props { title?: string; description?: string; image?: string; type?: 'website' | 'article'; noindex?: boolean; jsonLd?: object; ticker?: boolean }
+const { title, description = SITE.description, image = '/og-default.png', type = 'website', noindex = false, jsonLd, ticker = false } = Astro.props;
+const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name} · ${SITE.tagline}`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.url).href;
+const ogImage = new URL(image, Astro.site ?? SITE.url).href;
+const path = Astro.url.pathname;
+const today = new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+const latest = ticker ? (await getPosts()).slice(0, 4) : [];
+---
+<!doctype html>
+<html lang={SITE.lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content={noindex ? 'noindex' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+  {ADSENSE.client && <meta name="google-adsense-account" content={ADSENSE.client} />}
+  <meta name="theme-color" content="#0f1115" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={title ?? SITE.name} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="1000" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={ogImage} />
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  {ADSENSE.client && <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE.client}`} crossorigin="anonymous"></script>}
+  {ANALYTICS_ID && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`}></script>
+      <script is:inline define:vars={{ id: ANALYTICS_ID }}>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', id);</script>
+    </>
+  )}
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="topbar">
+    <div class="wrap">
+      <span class="date">{today}</span>
+      <nav aria-label="Enlaces del sitio">
+        <a href="/sobre-nosotros/">Quiénes somos</a>
+        <a href="/contacto/">Contacto</a>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+    </div>
+  </div>
+  <header class="masthead">
+    <div class="wrap">
+      <Logo />
+      <p class="brand-tag">Ciberseguridad, hacking ético y Linux contados sin humo.</p>
+    </div>
+  </header>
+  <nav class="navbar" aria-label="Secciones">
+    <div class="wrap">
+      <a href="/" aria-current={path === '/' ? 'page' : undefined}>Portada</a>
+      {CATEGORIES.map((c) => <a href={`/categoria/${c.slug}/`} aria-current={path.startsWith(`/categoria/${c.slug}`) ? 'page' : undefined}>{c.name}</a>)}
+    </div>
+  </nav>
+  {ticker && latest.length > 0 && (
+    <div class="ticker">
+      <div class="wrap">
+        <span class="label">Lo último</span>
+        <ul>{latest.map((p) => <li><a href={`/${p.id}/`}>{p.data.title}</a></li>)}</ul>
+      </div>
+    </div>
+  )}
+  <main id="contenido"><slot /></main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <span class="brand-name">brecha<span style="color:var(--alert)">cero</span></span>
+          <p>Medio independiente sobre ciberseguridad en español. Explicamos cómo funcionan las amenazas para que sepas defenderte.</p>
+        </div>
+        <div>
+          <h3>Secciones</h3>
+          <ul>{CATEGORIES.map((c) => <li><a href={`/categoria/${c.slug}/`}>{c.name}</a></li>)}</ul>
+        </div>
+        <div>
+          <h3>El medio</h3>
+          <ul>
+            <li><a href="/sobre-nosotros/">Quiénes somos</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+            <li><a href="/aviso-legal/">Aviso legal</a></li>
+            <li><a href="/privacidad/">Privacidad</a></li>
+            <li><a href="/cookies/">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <span>© {new Date().getFullYear()} {SITE.name}</span>
+        <span>Contenido divulgativo. Practica solo en sistemas propios o con permiso.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

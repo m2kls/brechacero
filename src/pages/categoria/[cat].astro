@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import Story from '../../components/Story.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { CATEGORIES } from '../../config';
+import { getPosts, shortDate } from '../../lib/posts';
+
+export function getStaticPaths() {
+  return CATEGORIES.map((c) => ({ params: { cat: c.slug }, props: { cat: c } }));
+}
+const { cat } = Astro.props;
+const all = await getPosts();
+const posts = all.filter((p) => p.data.category === cat.slug);
+const others = all.filter((p) => p.data.category !== cat.slug).slice(0, 6);
+---
+<Base title={cat.name} description={cat.description}>
+  <div class="wrap">
+    <header class="section-hero">
+      <h1 class="h">{cat.name}</h1>
+      <p>{cat.description}</p>
+    </header>
+    <div class="with-rail">
+      <div class="list-stories">
+        {posts.length ? posts.map((p, i) => <Story post={p} size="list" level={2} eager={i < 2} />) : <p>Todavía no hay artículos en esta sección.</p>}
+      </div>
+      <aside class="rail">
+        <div class="latest">
+          <h2>En otras secciones</h2>
+          <ol>{others.map((p) => <li><time datetime={p.data.date.toISOString()}>{shortDate(p.data.date)}</time><a href={`/${p.id}/`}>{p.data.title}</a></li>)}</ol>
+        </div>
+        <div class="sticky"><AdSlot position="sidebar" /></div>
+      </aside>
+    </div>
+  </div>
+</Base>

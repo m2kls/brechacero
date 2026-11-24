@@ -1,0 +1,21 @@
+---
+import { categoryName } from '../config';
+import { cover, shortDate, type Post } from '../lib/posts';
+interface Props { post: Post; size?: 'xl' | 'md' | 'sm' | 'list'; dek?: boolean; level?: 2 | 3; eager?: boolean }
+const { post, size = 'md', dek = size !== 'sm', level = 3, eager = false } = Astro.props;
+const d = post.data;
+const href = `/${post.id}/`;
+const H = level === 2 ? 'h2' : 'h3';
+---
+<article class={`story story-${size}`}>
+  <a href={href} class="media" tabindex="-1" aria-hidden="true">
+    <img src={cover(post)} alt="" width="1200" height="800" loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : 'auto'} />
+    {d.video && <span class="play">Vídeo</span>}
+  </a>
+  <div class="text" style={size === 'list' ? '' : 'display:contents'}>
+    <a class="kicker" href={`/categoria/${d.category}/`}>{categoryName(d.category)}</a>
+    <H class="h"><a href={href}>{d.title}</a></H>
+    {dek && <p class="dek">{d.description}</p>}
+    <div class="byline"><strong>{d.author}</strong><time datetime={d.date.toISOString()}>{shortDate(d.date)}</time></div>
+  </div>
+</article>

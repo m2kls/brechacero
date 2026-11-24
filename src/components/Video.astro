@@ -1,0 +1,28 @@
+---
+// Vídeo de YouTube "ligero": muestra la miniatura y solo carga el reproductor (youtube-nocookie) al pulsar.
+// Así la página carga rápido y YouTube no pone cookies hasta que el lector decide verlo.
+interface Props { id: string; title?: string; source?: string }
+const { id, title = 'Vídeo', source } = Astro.props;
+---
+<figure class="video">
+  <div class="frame" data-yt={id} data-title={title}>
+    <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" width="480" height="360" />
+    <button type="button" aria-label={`Reproducir: ${title}`}>
+      <span class="v-title">{title}</span>
+      <span class="btn-play"></span>
+    </button>
+  </div>
+  <figcaption>Vídeo{source && <>: {source}</>} · <a href={`https://www.youtube.com/watch?v=${id}`} rel="noopener">Ver en YouTube</a></figcaption>
+</figure>
+<script is:inline>
+  document.querySelectorAll('.video .frame').forEach((f) => {
+    f.querySelector('button')?.addEventListener('click', () => {
+      const i = document.createElement('iframe');
+      i.src = `https://www.youtube-nocookie.com/embed/${f.dataset.yt}?autoplay=1&rel=0`;
+      i.title = f.dataset.title || 'Vídeo';
+      i.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      i.allowFullscreen = true;
+      f.replaceChildren(i);
+    }, { once: true });
+  });
+</script>

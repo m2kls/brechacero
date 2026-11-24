@@ -1,0 +1,18 @@
+---
+// Hueco de anuncio manual. Si no hay slot configurado no pinta nada (los anuncios automáticos se colocan solos).
+import { ADSENSE } from '../config';
+interface Props { position: 'header' | 'inArticle' | 'sidebar' | 'footer' }
+const { position } = Astro.props;
+const slot = ADSENSE.slots[position];
+const active = ADSENSE.client && slot;
+---
+{active && <aside class={`ad ad-${position}`} aria-label="Publicidad">
+  <span class="ad-label">Publicidad</span>
+    <>
+      <ins class="adsbygoogle" style="display:block"
+        data-ad-client={ADSENSE.client} data-ad-slot={slot}
+        data-ad-format={position === 'inArticle' ? 'fluid' : 'auto'}
+        {...(position === 'inArticle' ? { 'data-ad-layout': 'in-article' } : { 'data-full-width-responsive': 'true' })}></ins>
+      <script is:inline>(window.adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </>
+</aside>}

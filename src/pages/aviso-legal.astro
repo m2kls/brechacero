@@ -1,0 +1,27 @@
+---
+import Page from '../layouts/Page.astro';
+import { SITE } from '../config';
+const o = SITE.owner;
+---
+<Page title="Aviso legal" description="Aviso legal e información del titular del sitio.">
+  <p><em>Plantilla orientativa. Revisa y completa los datos entre corchetes antes de publicar.</em></p>
+  <h2>1. Datos del titular</h2>
+  <p>En cumplimiento de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa:</p>
+  <ul>
+    <li>Titular: {o.name}</li>
+    <li>NIF: {o.nif}</li>
+    <li>Domicilio: {o.address}</li>
+    <li>Correo electrónico: {o.email}</li>
+    <li>Sitio web: {SITE.url}</li>
+  </ul>
+  <h2>2. Objeto</h2>
+  <p>{SITE.name} es un sitio de información y divulgación sobre ciberseguridad. El acceso es gratuito y se financia mediante publicidad.</p>
+  <h2>3. Finalidad educativa del contenido</h2>
+  <p>Los contenidos tienen carácter exclusivamente informativo y educativo. Cualquier técnica descrita debe aplicarse solo sobre sistemas propios o con autorización expresa del propietario. El titular no se responsabiliza del uso indebido que terceros hagan de la información publicada. El acceso no autorizado a sistemas informáticos está tipificado como delito en el Código Penal (arts. 197 bis y siguientes).</p>
+  <h2>4. Propiedad intelectual</h2>
+  <p>Los textos, diseño y logotipos de este sitio pertenecen a su titular o se usan con licencia. Se permite citar fragmentos enlazando a la fuente. Las marcas mencionadas pertenecen a sus respectivos propietarios.</p>
+  <h2>5. Enlaces externos</h2>
+  <p>El sitio puede contener enlaces a webs de terceros sobre las que el titular no tiene control ni asume responsabilidad.</p>
+  <h2>6. Legislación aplicable</h2>
+  <p>Este aviso se rige por la legislación española.</p>
+</Page>

@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Story from '../components/Story.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { SITE, CATEGORIES } from '../config';
+import { getPosts, shortDate } from '../lib/posts';
+
+const posts = await getPosts();
+const used = new Set<string>();
+const take = (list: typeof posts, n: number) => { const r = list.filter((p) => !used.has(p.id)).slice(0, n); r.forEach((p) => used.add(p.id)); return r; };
+const featured = posts.find((p) => p.data.featured) ?? posts[0];
+used.add(featured.id);
+const second = take(posts, 2);
+const latestList = posts.slice(0, 7);
+const guides = posts.filter((p) => ['guias', 'linux'].includes(p.data.category));
+const bandItems = take(guides, 3);
+const sections = CATEGORIES.filter((c) => !['guias', 'linux'].includes(c.slug)).filter((c) => posts.filter((p) => p.data.category === c.slug && !used.has(p.id)).length >= 3).map((c) => ({ c, items: take(posts.filter((p) => p.data.category === c.slug), 4) }));
+const more = take(posts, 12);
+const jsonLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, inLanguage: 'es',
+  publisher: { '@type': 'Organization', name: SITE.name, logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.svg` } } };
+---
+<Base jsonLd={jsonLd} ticker>
+  <h1 class="skip">{SITE.name}: noticias de ciberseguridad y hacking ético</h1>
+  <div class="wrap">
+    <AdSlot position="header" />
+    <section class="lead-grid" aria-label="Portada">
+      <Story post={featured} size="xl" level={2} eager />
+      <div class="lead-col">{second.map((p) => <Story post={p} size="md" dek={false} eager />)}</div>
+      <aside class="latest">
+        <h2>Últimas publicaciones</h2>
+        <ol>{latestList.map((p) => <li><time datetime={p.data.date.toISOString()}>{shortDate(p.data.date)}</time><a href={`/${p.id}/`}>{p.data.title}</a></li>)}</ol>
+      </aside>
+    </section>
+  </div>
+
+  {bandItems.length > 0 && (
+    <section class="band">
+      <div class="wrap">
+        <div class="section-head"><h2>Guías prácticas</h2><a class="more" href="/categoria/guias/">Todas las guías →</a></div>
+        <div class="grid-3">{bandItems.map((p) => <Story post={p} />)}</div>
+      </div>
+    </section>
+  )}
+
+  <div class="wrap">
+    {sections.map(({ c, items }) => (
+      <section class="section">
+        <div class="section-head"><h2>{c.name}</h2><a class="more" href={`/categoria/${c.slug}/`}>Ver todo →</a></div>
+        <div class="grid-4">{items.map((p) => <Story post={p} size="sm" />)}</div>
+      </section>
+    ))}
+    {more.length > 0 && (
+      <section class="section">
+        <div class="section-head"><h2>Más noticias</h2></div>
+        <div class="grid-4">{more.map((p) => <Story post={p} size="sm" />)}</div>
+      </section>
+    )}
+    <AdSlot position="footer" />
+  </div>
+</Base>

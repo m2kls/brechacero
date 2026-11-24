@@ -1,0 +1,20 @@
+---
+import Page from '../layouts/Page.astro';
+import { SITE } from '../config';
+---
+<Page title="Sobre nosotros" description={`Quiénes somos y qué hacemos en ${SITE.name}.`}>
+  <!-- PERSONALIZA ESTE TEXTO: Google valora que se vea quién está detrás de la web -->
+  <p><strong>{SITE.name}</strong> es un medio digital independiente dedicado a la ciberseguridad, el hacking ético, Linux y la privacidad, escrito en español y pensado tanto para curiosos como para profesionales.</p>
+  <h2>Qué publicamos</h2>
+  <ul>
+    <li><strong>Noticias</strong> sobre brechas de datos, ataques, parches y la industria de la seguridad.</li>
+    <li><strong>Vulnerabilidades explicadas</strong>: qué son, a quién afectan y cómo protegerse.</li>
+    <li><strong>Guías prácticas</strong> para proteger equipos, redes y cuentas.</li>
+    <li><strong>Formación</strong>: cómo aprender hacking ético de forma legal (CTF, laboratorios, certificaciones).</li>
+  </ul>
+  <h2>Nuestra línea editorial</h2>
+  <p>Hacemos divulgación con enfoque defensivo. Explicamos cómo funcionan las amenazas para que puedas entenderlas y protegerte, nunca para dañar a terceros. No publicamos herramientas maliciosas, credenciales filtradas ni instrucciones para atacar sistemas sin autorización.</p>
+  <h2>Quién escribe</h2>
+  <p>[Escribe aquí unas líneas sobre ti: tu experiencia, qué estudias o a qué te dedicas, por qué creaste la web. Añade enlaces a tus redes si quieres.]</p>
+  <p>¿Quieres proponernos un tema o corregir un error? <a href="/contacto/">Escríbenos</a>.</p>
+</Page>

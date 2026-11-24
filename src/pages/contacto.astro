@@ -1,0 +1,10 @@
+---
+import Page from '../layouts/Page.astro';
+import { SITE } from '../config';
+---
+<Page title="Contacto" description={`Cómo contactar con ${SITE.name}.`}>
+  <p>Puedes escribirnos para proponer temas, avisar de errores, colaboraciones o publicidad.</p>
+  <p><a class="btn" href={`mailto:${SITE.owner.email}`}>Escribir a {SITE.owner.email}</a></p>
+  <p>Solemos responder en 2 o 3 días laborables. No resolvemos consultas para acceder a cuentas o sistemas de terceros.</p>
+  <p>Si has encontrado una vulnerabilidad en nuestra web, por favor avísanos de forma responsable a esa misma dirección.</p>
+</Page>
