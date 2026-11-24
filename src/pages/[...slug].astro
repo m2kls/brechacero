@@ -23,10 +23,16 @@ const enc = encodeURIComponent;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'NewsArticle', headline: d.title, description: d.description, image: [`${SITE.url}${img}`],
+    { '@type': 'NewsArticle', '@id': `${url}#article`, headline: d.title, description: d.description,
+      image: [{ '@type': 'ImageObject', url: `${SITE.url}${img}`, width: 1500, height: 1000, ...(d.imageCredit ? { creditText: d.imageCredit } : {}) }],
       datePublished: d.date.toISOString(), dateModified: (d.updated ?? d.date).toISOString(),
-      author: { '@type': 'Person', name: d.author }, mainEntityOfPage: url, inLanguage: 'es',
-      publisher: { '@type': 'Organization', name: SITE.name, logo: { '@type': 'ImageObject', url: `${SITE.url}/logo.png`, width: 512, height: 512 } } },
+      author: d.author === 'Redacción'
+        ? { '@type': 'Organization', name: `Redacción ${SITE.name}`, url: `${SITE.url}/sobre-nosotros/` }
+        : { '@type': 'Person', name: d.author, url: `${SITE.url}/sobre-nosotros/` },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url }, inLanguage: 'es-ES', isAccessibleForFree: true,
+      articleSection: categoryName(d.category), keywords: d.tags.join(', '),
+      publisher: { '@type': 'Organization', '@id': `${SITE.url}/#organization`, name: SITE.name, url: SITE.url,
+        logo: { '@type': 'ImageObject', url: `${SITE.url}/logo.png`, width: 512, height: 512 } } },
     { '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Portada', item: SITE.url },
       { '@type': 'ListItem', position: 2, name: categoryName(d.category), item: `${SITE.url}/categoria/${d.category}/` },
@@ -35,7 +41,7 @@ const jsonLd = {
   ],
 };
 ---
-<Base title={d.title} description={d.description} image={img} type="article" jsonLd={jsonLd}>
+<Base title={d.title} description={d.description} image={img} type="article" jsonLd={jsonLd} article={{ published: d.date, modified: d.updated ?? d.date, section: categoryName(d.category), tags: d.tags }}>
   <div class="wrap">
     <header class="article-head">
       <a class="kicker" href={`/categoria/${d.category}/`}>{categoryName(d.category)}</a>

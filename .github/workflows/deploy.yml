@@ -37,3 +37,11 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 8e6d31743e402a40e739874a3c436067
           command: pages deploy dist --project-name=brechacero --branch=main --commit-dirty=true
+      - name: Avisar a Bing/IndexNow de las noticias nuevas
+        if: github.event_name == 'push'
+        continue-on-error: true
+        run: |
+          sleep 20
+          URLS=$(python3 -c "import re;x=open('dist/news-sitemap.xml').read();print(','.join('\"'+u+'\"' for u in re.findall(r'<loc>([^<]+)</loc>',x)+['https://brechacero.pages.dev/']))")
+          curl -s -X POST https://api.indexnow.org/indexnow -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"brechacero.pages.dev\",\"key\":\"878941f683a757a78687d2d4dd334f43\",\"keyLocation\":\"https://brechacero.pages.dev/878941f683a757a78687d2d4dd334f43.txt\",\"urlList\":[$URLS]}" -w "IndexNow HTTP %{http_code}\n"

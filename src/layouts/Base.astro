@@ -10,8 +10,8 @@ import '../styles/global.css';
 import { SITE, CATEGORIES, ADSENSE, ANALYTICS_ID } from '../config';
 import Logo from '../components/Logo.astro';
 import { getPosts } from '../lib/posts';
-interface Props { title?: string; description?: string; image?: string; type?: 'website' | 'article'; noindex?: boolean; jsonLd?: object; ticker?: boolean }
-const { title, description = SITE.description, image = '/og-default.png', type = 'website', noindex = false, jsonLd, ticker = false } = Astro.props;
+interface Props { article?: { published: Date; modified: Date; section: string; tags: string[] }; title?: string; description?: string; image?: string; type?: 'website' | 'article'; noindex?: boolean; jsonLd?: object; ticker?: boolean }
+const { article, title, description = SITE.description, image = '/og-default.png', type = 'website', noindex = false, jsonLd, ticker = false } = Astro.props;
 const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name} · ${SITE.tagline}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.url).href;
 const ogImage = new URL(image, Astro.site ?? SITE.url).href;
@@ -44,6 +44,10 @@ const latest = ticker ? (await getPosts()).slice(0, 4) : [];
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:width" content="1500" />
   <meta property="og:image:height" content="1000" />
+  {article && <meta property="article:published_time" content={article.published.toISOString()} />}
+  {article && <meta property="article:modified_time" content={article.modified.toISOString()} />}
+  {article && <meta property="article:section" content={article.section} />}
+  {article?.tags.map((t) => <meta property="article:tag" content={t} />)}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content={ogImage} />
   {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

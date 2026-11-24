@@ -16,8 +16,13 @@ const guides = posts.filter((p) => ['guias', 'linux'].includes(p.data.category))
 const bandItems = take(guides, 3);
 const sections = CATEGORIES.filter((c) => !['guias', 'linux'].includes(c.slug)).filter((c) => posts.filter((p) => p.data.category === c.slug && !used.has(p.id)).length >= 3).map((c) => ({ c, items: take(posts.filter((p) => p.data.category === c.slug), 4) }));
 const more = take(posts, 12);
-const jsonLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, inLanguage: 'es',
-  publisher: { '@type': 'Organization', name: SITE.name, logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.svg` } } };
+const jsonLd = { '@context': 'https://schema.org', '@graph': [
+  { '@type': 'WebSite', '@id': `${SITE.url}/#website`, name: SITE.name, url: SITE.url, inLanguage: 'es-ES', description: SITE.description,
+    publisher: { '@id': `${SITE.url}/#organization` } },
+  { '@type': 'NewsMediaOrganization', '@id': `${SITE.url}/#organization`, name: SITE.name, url: SITE.url,
+    logo: { '@type': 'ImageObject', url: `${SITE.url}/logo.png`, width: 512, height: 512 },
+    publishingPrinciples: `${SITE.url}/sobre-nosotros/`, ethicsPolicy: `${SITE.url}/sobre-nosotros/` },
+] };
 ---
 <Base jsonLd={jsonLd} ticker>
   <h1 class="skip">{SITE.name}: noticias de ciberseguridad y hacking ético</h1>

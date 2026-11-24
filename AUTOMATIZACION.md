@@ -34,6 +34,28 @@ Cualquier persona que edite la web también puede usarlas como guía de estilo.
 - Enlazar 1–2 artículos propios relacionados (p. ej. `/proteger-cuentas-contrasenas-2fa/`,
   `/como-detectar-phishing/`, `/saber-si-mi-contrasena-ha-sido-filtrada/`, `/que-es-una-cve/`).
 
+## 2b. Posicionamiento en buscadores (obligatorio en cada noticia)
+
+- **Palabra clave principal**: antes de escribir, decide cómo lo buscaría un lector en Google en español
+  (p. ej. "filtración GTA 6", "hackeo LaLiga", "fallo Outlook"). Debe aparecer:
+  - al principio del `title` (máx. ~65 caracteres visibles; el resto puede cortarse en Google),
+  - en la `description` (140–160 caracteres, con el dato clave y una llamada a leer),
+  - en el **primer párrafo** y en al menos un subtítulo `##`,
+  - en el **slug** (corto, sin artículos ni fechas: `hackeo-laliga-datos-aficionados`).
+- Usa nombres propios completos (empresa, producto, CVE, versión) tal y como se buscan.
+- El primer párrafo responde a qué, quién, cuándo y por qué importa (Google lo usa como resumen).
+- Subtítulos `##` que sean preguntas o frases que la gente busca ("¿Estoy afectado?", "Cómo protegerte").
+- **Enlaces internos**: 2–3 enlaces a otros artículos de la web con texto descriptivo
+  (nunca "pincha aquí"). Revisa `ls src/content/articulos/` para elegir los más relacionados.
+- **Enlaces externos** solo a fuentes fiables, en la sección `## Fuentes`.
+- `tags`: 4–7 etiquetas con los términos de búsqueda (empresa, producto, tipo de ataque, país).
+- `imageAlt` describe la foto con la palabra clave si encaja de forma natural.
+- Si una noticia anterior trata el mismo tema, **actualízala** (cambia el texto y pon `updated:` con la fecha) en lugar de crear otra casi igual.
+- No repitas la palabra clave de forma forzada: escribe para personas.
+
+La web ya genera sola el sitemap, el sitemap de Google News, los datos estructurados `NewsArticle`
+y avisa a Bing (IndexNow) en cada publicación; no hace falta tocar nada de eso.
+
 ## 3. Formato del archivo
 
 `src/content/articulos/<slug>.md` (slug en minúsculas, sin tildes, con guiones, 3–7 palabras):
