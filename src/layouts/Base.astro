@@ -51,11 +51,18 @@ const latest = ticker ? (await getPosts()).slice(0, 4) : [];
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content={ogImage} />
   {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  <script is:inline>
+    // Modo de consentimiento de Google: todo denegado hasta que el visitante acepte.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
+    try { var c = localStorage.getItem('bc-consent'); if (c === 'si') gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' }); } catch (e) {}
+  </script>
   {ADSENSE.client && <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE.client}`} crossorigin="anonymous"></script>}
   {ANALYTICS_ID && (
     <>
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`}></script>
-      <script is:inline define:vars={{ id: ANALYTICS_ID }}>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', id);</script>
+      <script is:inline define:vars={{ id: ANALYTICS_ID }}>gtag('js', new Date()); gtag('config', id);</script>
     </>
   )}
 </head>
@@ -111,6 +118,7 @@ const latest = ticker ? (await getPosts()).slice(0, 4) : [];
             <li><a href="/aviso-legal/">Aviso legal</a></li>
             <li><a href="/privacidad/">Privacidad</a></li>
             <li><a href="/cookies/">Cookies</a></li>
+            <li><a href="#" data-cookie-prefs>Preferencias de cookies</a></li>
           </ul>
         </div>
       </div>
@@ -120,5 +128,27 @@ const latest = ticker ? (await getPosts()).slice(0, 4) : [];
       </div>
     </div>
   </footer>
+  <div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+    <p>Usamos cookies propias y de Google para mostrar anuncios y medir la audiencia. Puedes aceptarlas o rechazarlas: la web funciona igual. <a href="/cookies/">Más información</a></p>
+    <div class="consent-btns">
+      <button type="button" data-consent="no">Rechazar</button>
+      <button type="button" data-consent="si" class="primary">Aceptar</button>
+    </div>
+  </div>
+  <script is:inline>
+    (function () {
+      var box = document.getElementById('consent');
+      var saved = null; try { saved = localStorage.getItem('bc-consent'); } catch (e) {}
+      if (!saved) box.hidden = false;
+      function set(v) {
+        try { localStorage.setItem('bc-consent', v); } catch (e) {}
+        var g = v === 'si' ? 'granted' : 'denied';
+        gtag('consent', 'update', { ad_storage: g, ad_user_data: g, ad_personalization: g, analytics_storage: g });
+        box.hidden = true;
+      }
+      box.querySelectorAll('[data-consent]').forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.consent); }); });
+      document.querySelectorAll('[data-cookie-prefs]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); box.hidden = false; }); });
+    })();
+  </script>
 </body>
 </html>

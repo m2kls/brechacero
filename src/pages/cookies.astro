@@ -2,7 +2,6 @@
 import Page from '../layouts/Page.astro';
 ---
 <Page title="Política de cookies" description="Qué cookies usamos y cómo gestionarlas.">
-  <p><em>Plantilla orientativa. Revísala cuando actives la publicidad y la analítica.</em></p>
   <h2>Qué son las cookies</h2>
   <p>Pequeños archivos que los sitios web guardan en tu navegador para recordar información sobre tu visita.</p>
   <h2>Cookies que usamos</h2>
@@ -11,9 +10,11 @@ import Page from '../layouts/Page.astro';
     <tbody>
       <tr><td>Google AdSense</td><td>Mostrar y medir anuncios, personalizados o no según tu consentimiento</td><td>Terceros, publicidad</td></tr>
       <tr><td>Google Analytics (si está activo)</td><td>Estadísticas anónimas de visitas</td><td>Terceros, analítica</td></tr>
-      <tr><td>Google (gestor de consentimiento)</td><td>Recordar tus preferencias de cookies</td><td>Técnica</td></tr>
+      <tr><td>Brecha Cero (<code>bc-consent</code>, almacenamiento local)</td><td>Recordar si aceptaste o rechazaste las cookies</td><td>Técnica, propia</td></tr>
+      <tr><td>YouTube (modo de privacidad mejorada)</td><td>Reproducir vídeos incrustados, solo si pulsas en el vídeo</td><td>Terceros</td></tr>
     </tbody>
   </table>
   <h2>Cómo gestionarlas</h2>
-  <p>Al entrar por primera vez verás un aviso para aceptar, rechazar o configurar las cookies. Puedes cambiar tu elección en cualquier momento desde el enlace de preferencias de privacidad que aparece en la web, o borrando las cookies desde tu navegador.</p>
+  <p>Al entrar por primera vez verás un aviso para aceptar o rechazar las cookies. Hasta que no aceptes, no se usan cookies de publicidad ni de analítica: Google solo puede mostrar anuncios no personalizados sin guardar información en tu navegador (modo de consentimiento de Google). Rechazar es tan fácil como aceptar y la web funciona igual.</p>
+  <p>Puedes cambiar tu elección en cualquier momento desde el enlace <a href="#" data-cookie-prefs>Preferencias de cookies</a> del pie de página, o borrando las cookies y datos del sitio desde tu navegador.</p>
 </Page>
