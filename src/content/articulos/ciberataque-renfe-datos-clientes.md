@@ -5,7 +5,6 @@ date: 2026-11-24T14:50:00+01:00
 category: noticias
 tags: [Renfe, Adif, filtración de datos, phishing, DNI, España]
 author: Redacción
-featured: true
 photo: "File:Estación de Madrid Puerta de Atocha, tren AVE con destino Valencia, España. Renfe serie 112.JPG"
 imageAlt: "Tren AVE de Renfe en la estación de Madrid Puerta de Atocha"
 ---
