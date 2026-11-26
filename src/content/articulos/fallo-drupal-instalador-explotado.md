@@ -2,12 +2,15 @@
 title: "Fallo en Drupal ya explotado: el instalador permite secuestrar webs"
 description: "Fallo en Drupal explotado desde el 19 de noviembre: CVE-2026-132165 permite reinstalar la web y tomar el control. CISA da tres días. Versiones a instalar ya."
 date: 2026-11-25T10:54:00+01:00
+updated: 2026-11-26T10:58:00+01:00
 category: vulnerabilidades
 tags: [Drupal, CVE-2026-132165, CMS, CISA KEV, parche, webs]
 author: Redacción
 photo: "File:Drupal logo.jpg"
 imageAlt: "Logotipo de Drupal, el gestor de contenidos afectado por un fallo explotado en su instalador"
 ---
+
+**Actualización 26 de noviembre:** Drupal ha publicado un segundo parche porque este no protegía todas las webs. Lo explicamos en [el nuevo fallo de Drupal CVE-2026-136716](/drupal-nuevo-fallo-instalador-cve-2026-136716/); las versiones a instalar ahora son 11.4.14, 11.3.23 y 10.6.23.
 
 El fallo en Drupal que el proyecto corrigió el 18 de noviembre ya se está aprovechando en ataques reales. Se trata de CVE-2026-132165, una vulnerabilidad en el instalador del núcleo de Drupal que, en determinadas condiciones, permite a alguien sin cuenta volver a instalar el sitio y, a partir de ahí, secuestrarlo o ejecutar código en el servidor. El equipo de seguridad de Drupal ha confirmado explotación en webs en producción desde el 19 de noviembre, y la agencia estadounidense CISA la añadió el 24 de noviembre a su catálogo de vulnerabilidades explotadas.
 
