@@ -5,7 +5,6 @@ date: 2026-11-25T23:00:00+01:00
 category: noticias
 tags: [1Password, gestor de contraseñas, GitHub, filtración, cadena de suministro, phishing]
 author: Redacción
-featured: true
 photo: "File:Code_on_computer_monitor_(Unsplash).jpg"
 imageAlt: "Código fuente en un monitor, como el que se copió en el hackeo de 1Password"
 ---
