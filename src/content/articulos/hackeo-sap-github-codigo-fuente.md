@@ -2,6 +2,7 @@
 title: "Hackeo a SAP: roban tokens de empleados y alteran código en GitHub"
 description: "Hackeo a SAP: la empresa confirma un incidente activo en el que se robaron tokens de empleados para copiar y modificar código en GitHub. Qué se sabe y qué revisar."
 date: 2026-11-27T04:54:00+01:00
+updated: 2026-11-28T06:55:00+01:00
 category: noticias
 tags: [SAP, hackeo, GitHub, código fuente, cadena de suministro, tokens, Alemania]
 author: Redacción
@@ -20,6 +21,14 @@ Lo que no se sabe todavía es importante:
 - Cómo obtuvieron los atacantes los tokens de los empleados.
 - Qué repositorios se vieron afectados y si eran públicos o privados.
 - Qué cambios exactos se introdujeron en el código y si alguno llegó a versiones publicadas o a productos que usan los clientes.
+
+## Actualización: medidas de emergencia y aviso del BSI
+
+Según informaciones de agencias de prensa recogidas por SOCRadar y The Next Web el 27 de noviembre, SAP habría restringido el acceso a GitHub, detenido procesos automatizados de desarrollo y sustituido claves de firma de software. La empresa no ha confirmado públicamente estas medidas ni ha publicado todavía instrucciones específicas para clientes. Una carta interna citada por SOCRadar sitúa la actividad sospechosa en GitHub y pide a la plantilla que revise sus credenciales.
+
+El cambio de claves de firma es relevante: esas claves sirven para que los clientes comprueben que una actualización viene realmente de SAP. Sustituirlas es una precaución lógica si existe la mínima duda de que hayan podido quedar expuestas, y conviene estar atento a cualquier aviso de SAP sobre nuevas firmas o certificados.
+
+Por su parte, la Oficina Federal de Seguridad de la Información alemana (BSI) emitió el mismo jueves 26 una advertencia general sobre herramientas de ataque autónomas basadas en IA, entre ellas ARTEX, CAIRN y PentAGI. No es un comunicado sobre SAP, pero coincide con las informaciones que apuntan al uso de agentes de IA en la intrusión. Lo contamos también en [Suiza confirma ciberataques con agentes de IA](/suiza-ciberataques-agentes-ia-infraestructura-critica/).
 
 ## ¿Afecta a los clientes de SAP?
 
@@ -40,6 +49,9 @@ Mientras SAP no publique más detalles, los equipos de seguridad y de desarrollo
 Actualizaremos esta noticia cuando SAP aclare qué repositorios se vieron afectados y si algún componente distribuido a clientes llegó a modificarse.
 
 ## Fuentes
+
+- SOCRadar: [SAP Security Incident: GitHub Tokens and Source Code](https://socradar.io/blog/sap-security-incident-github-tokens-source-code/)
+- The Next Web: [SAP confirms security incident after reported GitHub breach](https://thenextweb.com/news/sap-security-incident-github-breach)
 
 - Cyber Security News: [SAP Confirms Security Incident as Hackers Reportedly Steal GitHub Tokens and Alter Source Code](https://cybersecuritynews.com/sap-security-incident/)
 - WPNews / osna.fm (a partir de Der Spiegel): [SAP confirms active cyberattack targeting GitHub source code and employee tokens](https://wpnews.pro/news/sap-confirms-active-cyberattack-targeting-github-source-code-and-employee-tokens)
